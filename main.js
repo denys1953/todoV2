@@ -24,6 +24,7 @@ function buttonAdd() {
          <div class="active">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <div class="checked">${input.value}</div>
+            <button id="rename" type="button" class="btn btn-primary">&#9998;</button>
             <button type="button" class="btn btn-danger">&#215;</button>
          </div>
       `
@@ -39,6 +40,7 @@ function check() {
    let btn = document.getElementsByClassName("btn-danger")
    let checkBox = document.getElementsByClassName("form-check-input")
    let active = document.getElementsByClassName("checked")
+   let renameButton = document.getElementsByClassName('active')
    for (let i = 0; i < btn.length; i++) {
       btn[i].addEventListener('click', clearButton)
    }
@@ -58,6 +60,9 @@ function check() {
             m--
          }
       })
+   }
+   for (let i = 0; i < renameButton.length; i++) {
+      renameButton[i].children[2].addEventListener('click', reName)
    }
    localStorage.setItem('out', JSON.stringify(out2))
 }
@@ -79,4 +84,23 @@ function checkBoxChecked() {
    out2 = document.getElementById('todo-list').innerHTML
    localStorage.removeItem('out')
    localStorage.setItem('out', JSON.stringify(out2))
+}
+function reName() {
+   if (this.parentNode.children[1].outerHTML !== '<textarea></textarea>') {
+      this.innerHTML = '&#10003;'
+      this.style.transform = 'rotateY(360deg)'
+      let textarea = document.createElement('TEXTAREA')
+      textarea.value = this.parentNode.children[1].innerHTML
+      this.parentNode.children[1].remove()
+      this.parentNode.insertBefore(textarea, this.parentNode.children[1])
+      this.parentNode.children[1].focus()  
+   } else {
+      this.innerHTML = '&#9998;'
+      this.style.transform = 'rotateY(180deg)'
+      let div = document.createElement('div')
+      div.innerHTML = this.parentNode.children[1].value
+      this.parentNode.children[1].remove()
+      this.parentNode.insertBefore(div, this.parentNode.children[1])
+   }
+
 }

@@ -62,8 +62,37 @@
 .active div {
    background-color: #fff;
    word-break: break-all;
-   width: 85%;
+   width: 80%;
 }
 .check {
    text-decoration: line-through;
+}
+#rename {
+   position: absolute;
+   right: 50px;
+   transform:rotateY(180deg);
+   text-align: center;
+   width: 45px;
+}
+
+textarea {
+   height: 40px;
+   width: 80%;
+}
+
+@media screen and (max-width: 767px) {
+   .active div {
+      width: 68%;
+   }
+   .textarea {
+      width: 68%;
+   }
+}
+@media screen and (max-width: 402px) {
+   .active div {
+      width: 62%;
+   }
+   .textarea {
+      width: 62%;
+   }
 }
