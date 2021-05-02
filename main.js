@@ -59,6 +59,9 @@ function check() {
             active[i].classList.remove('check')
             m--
          }
+         out2 = document.getElementById('todo-list').innerHTML
+         localStorage.removeItem('out')
+         localStorage.setItem('out', JSON.stringify(out2))
       })
    }
    for (let i = 0; i < renameButton.length; i++) {
@@ -95,12 +98,17 @@ function reName() {
       this.parentNode.insertBefore(textarea, this.parentNode.children[1])
       this.parentNode.children[1].focus()  
    } else {
-      this.innerHTML = '&#9998;'
-      this.style.transform = 'rotateY(180deg)'
       let div = document.createElement('div')
+      div.classList.add('checked')
       div.innerHTML = this.parentNode.children[1].value
-      this.parentNode.children[1].remove()
-      this.parentNode.insertBefore(div, this.parentNode.children[1])
+      if (this.parentNode.children[1].value == '') {
+         return
+      } else {
+         this.parentNode.children[1].remove()
+         this.parentNode.insertBefore(div, this.parentNode.children[1])
+         this.innerHTML = '&#9998;'
+         this.style.transform = 'rotateY(180deg)'
+      }
    }
-
+   check()
 }
