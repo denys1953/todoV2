@@ -2,7 +2,7 @@ let input = document.getElementById('input')
 let button = document.getElementById('out')
 let todo
 
-if (JSON.parse(localStorage.getItem('out')) == null) {
+if (JSON.parse(localStorage.getItem('out')) == null || JSON.parse(localStorage.getItem('out')).indexOf('div') == -1) {
    localStorage.setItem('out', JSON.stringify(''))
 }
 
