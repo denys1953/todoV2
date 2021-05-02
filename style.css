@@ -76,15 +76,15 @@
 }
 
 textarea {
-   height: 40px;
-   width: 80%;
+   height: 80px;
+   width: 75%;
 }
 
 @media screen and (max-width: 767px) {
    .active div {
       width: 68%;
    }
-   .textarea {
+   textarea {
       width: 68%;
    }
 }
@@ -92,7 +92,7 @@ textarea {
    .active div {
       width: 62%;
    }
-   .textarea {
+   textarea {
       width: 62%;
    }
 }
